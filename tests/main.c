@@ -6,13 +6,41 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/15 21:23:17 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/15 22:11:30 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libasm.h"
 
-void	check_strlen(void)
+static void	check_strcmp(void)
+{
+	int		i;
+	char	*s[10];
+
+	s[0] = "test identique";
+	s[1] = "test identique";
+	s[2] = "test basique   ";
+	s[3] = "test basique      ";
+	s[4] = "nul byte";
+	s[5] = "nul\0byte";
+	s[6] = "caractères spéciaux : &é'(§è!çà)-ù^¨$`*=+:/;.,?";
+	s[7] = "caractères spéciaux : -)àçç!éè'§&";
+	s[8] = "";
+	s[9] = "\0";
+	i = 0;
+	while (i < 9)
+	{
+		printf("%s|%s\n\033[20Gft_strcmp [%d]\tvs\t[%d] strcmp\t\t",
+			s[i], s[i + 1], ft_strcmp(s[i], s[i + 1]), strcmp(s[i], s[i + 1]));
+		if (ft_strcmp(s[i], s[i + 1]) == strcmp(s[i], s[i + 1]))
+			printf("[\033[0;32m ok \033[0m]\n\n");
+		else
+			printf("[\033[0;31m ko \033[0m]\n\n");
+		i += 2;
+	}
+}
+
+static void	check_strlen(void)
 {
 	int		i;
 	char	*s[10];
@@ -39,11 +67,14 @@ void	check_strlen(void)
 	}
 }
 
-int		main(void)
+int			main(void)
 {
 	printf(" ------------------------\n");
 	printf("|      LIBASM TESTS      |\n");
 	printf(" ------------------------\n\n");
+	printf(" --------------------\n|      ft_strlen     |\n\n");
 	check_strlen();
+	printf(" --------------------\n|      ft_strcmp     |\n\n");
+	check_strcmp();
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 10:12:59 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/15 20:47:37 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/15 21:42:55 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME		=	libasm.a
 
 TEST		=	libasm
 
-SRCS		=	strlen.s
+SRCS		=	strlen.s \
+			strcmp.s
 
 SRCS_TEST	=	main.c
 
