@@ -1,40 +1,32 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strcmp.s                                        :+:      :+:    :+:    #
+#    ft_strcpy.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/15 14:47:41 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/15 22:29:19 by aldubar          ###   ########.fr        #
+#    Created: 2021/03/15 22:16:57 by aldubar           #+#    #+#              #
+#    Updated: 2021/03/15 22:28:49 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-		global		ft_strcmp
+		global		ft_strcpy
 
-		section		.text
+		section		.data
 
-ft_strcmp:
-		xor	rax, rax			; ret
+ft_strcpy:
 		xor	rcx, rcx			; i
+		xor	rax, rax
 
 	loop:
-		mov	al, byte [rdi + rcx]		; al = s1[rcx]
-		cmp	al, byte [rsi + rcx]		; s1[rcx] == s2[rcx] ?
-		jne	diff				; if no, calculate diff
-		cmp	al, 0				; s1[rcx] == \0 ?
-		je	return				; if yes return value
-		mov	al, byte [rsi + rcx]		; al = s2[rcx]
-		cmp	al, 0				; s2[rcx] == \0 ?
-		je	return				; if yes return value
+		cmp	byte [rsi + rcx], 0		; src[rcx] == '\0' ?
+		je	return
+		mov	cl, byte [rsi + rcx]		; cl = src[rcx]
+		mov	byte [rdi + rcx], cl		; dest[rcx] = cl
 		inc	rcx				; rcx++
 		jmp	loop
 
-	diff:
-		mov	cl, byte[rsi + rcx]		; cl = s2[rcx]
-		sub	eax, ecx			; rax -= cl
-		ret
-
 	return:
-		mov	rax, 0
+		mov	byte [rdi + rcx], 0		; dest[rcx] = '\0'
+		mov	rax, rdi
 		ret

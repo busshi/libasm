@@ -6,11 +6,45 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/15 22:11:30 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/15 23:03:37 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libasm.h"
+
+static void	check_strcpy(void)
+{
+	int		i;
+	char	*dest;
+	char	*s[10];
+
+	printf("oo");
+	dest = (char *)malloc(sizeof(char) * 50);
+	s[0] = "test";
+	s[1] = "test simple";
+	s[2] = "test                avec        espaces   ";
+	s[3] = "test\t\ttabulations\n";
+	s[4] = "nul byte\0";
+	s[5] = "nul\0byte";
+	s[6] = "caractères spéciaux 👉 &é'(§è!çà)-ù^¨$`*=+:/;.,?";
+	s[7] = "caractères spéciaux 👉 &-)àçç!éè'§&";
+	s[8] = "";
+	s[9] = "\0";
+	i = -1;
+	printf("oooo");
+	while (++i < 10)
+	{
+		printf("ok");
+		bzero(dest, 50);
+		printf("ok2");
+		printf("src: %s\n\033[20Gft_strcpy [%s]\tvs\t[%s] strcpy\t\t",
+			s[i], ft_strcpy(dest, s[i]), strcpy(dest, s[i]));
+		if (strcmp(ft_strcpy(dest, s[i]), strcpy(dest, s[i])) == 0)
+			printf("[\033[0;32m ok \033[0m]\n\n");
+		else
+			printf("[\033[0;31m ko \033[0m]\n\n");
+	}
+}
 
 static void	check_strcmp(void)
 {
@@ -19,18 +53,18 @@ static void	check_strcmp(void)
 
 	s[0] = "test identique";
 	s[1] = "test identique";
-	s[2] = "test basique   ";
-	s[3] = "test basique      ";
+	s[2] = "test basique avec moins d'espaces  ";
+	s[3] = "test basique avec moins d'espaces     ";
 	s[4] = "nul byte";
 	s[5] = "nul\0byte";
-	s[6] = "caractères spéciaux : &é'(§è!çà)-ù^¨$`*=+:/;.,?";
-	s[7] = "caractères spéciaux : -)àçç!éè'§&";
+	s[6] = "caractères spéciaux 👉 \xFF \xAE&é'(§è!çà)-ù^¨$`*=+:/;.,?";
+	s[7] = "caractères spéciaux 👉 \xFF \xAE&-)àçç!éè'§&";
 	s[8] = "";
 	s[9] = "\0";
 	i = 0;
 	while (i < 9)
 	{
-		printf("%s|%s\n\033[20Gft_strcmp [%d]\tvs\t[%d] strcmp\t\t",
+		printf("s1: %s\ns2: %s\n\033[20Gft_strcmp [%d]\tvs\t[%d] strcmp\t\t",
 			s[i], s[i + 1], ft_strcmp(s[i], s[i + 1]), strcmp(s[i], s[i + 1]));
 		if (ft_strcmp(s[i], s[i + 1]) == strcmp(s[i], s[i + 1]))
 			printf("[\033[0;32m ok \033[0m]\n\n");
@@ -50,7 +84,7 @@ static void	check_strlen(void)
 	s[2] = "plusieurs mots font une phrase...";
 	s[3] = "";
 	s[4] = "\0";
-	s[5] = "caractères spéciaux : &é'(§è!çà)°$*`£%ù^¨=+:/;.,?∞…÷≠@#\x17";
+	s[5] = "caractères spéciaux : &é'(§è!çà)°$*`£%ù^¨=+:/;.,?∞…÷≠@#\x17\xFF";
 	s[6] = "👉";
 	s[7] = "test nul\0byte";
 	s[8] = "test tabulations\t\r\t\v\ntabulations";
@@ -69,12 +103,14 @@ static void	check_strlen(void)
 
 int			main(void)
 {
-	printf(" ------------------------\n");
+	printf("\033[0;33m ------------------------\n");
 	printf("|      LIBASM TESTS      |\n");
-	printf(" ------------------------\n\n");
-	printf(" --------------------\n|      ft_strlen     |\n\n");
+	printf(" ------------------------\n\n\033[0;m");
+	printf("\033[0;35m --------------------\n|      ft_strlen     |\n\n\033[0;m");
 	check_strlen();
-	printf(" --------------------\n|      ft_strcmp     |\n\n");
+	printf("\033[0;35m --------------------\n|      ft_strcmp     |\n\n\033[0;m");
 	check_strcmp();
+	printf("\033[0;35m --------------------\n|      ft_strcpy     |\n\n\033[0;m");
+	check_strcpy();
 	return (0);
 }

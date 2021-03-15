@@ -6,13 +6,13 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 10:31:14 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/15 15:05:20 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/15 22:21:10 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-global 		ft_strlen
+		global 		ft_strlen
 
-section		.text
+		section		.text
 
 ft_strlen:
 		xor	rax, rax			; return value
