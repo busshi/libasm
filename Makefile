@@ -6,47 +6,59 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 10:12:59 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/15 11:08:13 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/15 20:47:37 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libasm.a
+NAME		=	libasm.a
 
-HEADER	=	includes/libasm.h
+TEST		=	libasm
 
-SRCS	=	strlen.s
+SRCS		=	strlen.s
 
-OK	=	[ \e[0;32mok\e[0m ]
+SRCS_TEST	=	main.c
 
-ASM	=	@nasm
+OK		=	[ \033[0;32mok\033[0m ]
 
-CC	=	@clang
+ASM		=	@nasm
 
-AFLAGS	=	-f elf64
+CC		=	@clang
 
-CFLAGS	=	-Wall -Wextra -Werror
+AFLAGS		=	-felf64
 
-RM	=	@rm -f
+CFLAGS		=	-Wall -Wextra -Werror
 
-OBJS	=	$(addprefix srcs/ft_, $(SRCS:.s=.o))
+RM		=	@rm -f
+
+OBJS		=	$(addprefix srcs/ft_, $(SRCS:.s=.o))
+
+OBJS_TEST	=	$(addprefix tests/, $(SRCS_TEST:.c=.o))
 
 .s.o:
 		$(ASM) $(AFLAGS) $<
 
-$(NAME):	$(OBJS)
+.c.o:
+		$(CC) $(CFLAGS) -I includes -c $< -o $(<:.c=.o)
+
+$(NAME):	$(OBJS) $(OBJS_TEST)
 		@echo "Compiling libasm..."
 		@ar rcs $(NAME) $(OBJS)
 		@echo "$(OK) libasm build !"
+		@echo "Compiling tests..."
+		$(CC) $(CFLAGS) $(OBJS_TEST) -L. -lasm -o $(TEST)
+		@echo "$(OK) Tests build ! ==> Run ./$(TEST)"
 
 all:		$(NAME)
 
 clean:
 		@echo "Cleaning..."
-		$(RM) $(OBJS)
+		$(RM) $(OBJS) $(OBJS_TEST) $(TEST)
 		@echo "$(OK) Cleaned !"
 
 fclean:		clean
 		$(RM) $(NAME)
 		@echo "$(OK) Fcleaned!"
+
+re:		fclean all
 
 .PHONY:		all clean fclean re bonus
