@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/15 23:03:37 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/16 10:01:50 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 static void	check_strcpy(void)
 {
 	int		i;
-	char	*dest;
+	char	dest[50];;
 	char	*s[10];
 
-	printf("oo");
-	dest = (char *)malloc(sizeof(char) * 50);
 	s[0] = "test";
 	s[1] = "test simple";
 	s[2] = "test                avec        espaces   ";
-	s[3] = "test\t\ttabulations\n";
+	s[3] = "test\t\t\v\rtabulations\n";
 	s[4] = "nul byte\0";
 	s[5] = "nul\0byte";
 	s[6] = "caractères spéciaux 👉 &é'(§è!çà)-ù^¨$`*=+:/;.,?";
@@ -31,13 +29,10 @@ static void	check_strcpy(void)
 	s[8] = "";
 	s[9] = "\0";
 	i = -1;
-	printf("oooo");
 	while (++i < 10)
 	{
-		printf("ok");
 		bzero(dest, 50);
-		printf("ok2");
-		printf("src: %s\n\033[20Gft_strcpy [%s]\tvs\t[%s] strcpy\t\t",
+		printf("src: %s\nft_strcpy [%s]\nvs\nstrcpy    [%s]\n",
 			s[i], ft_strcpy(dest, s[i]), strcpy(dest, s[i]));
 		if (strcmp(ft_strcpy(dest, s[i]), strcpy(dest, s[i])) == 0)
 			printf("[\033[0;32m ok \033[0m]\n\n");
