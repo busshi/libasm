@@ -1,39 +1,32 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strdup.s                                        :+:      :+:    :+:    #
+#    ft_write.s                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/16 10:19:55 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/16 16:13:09 by aldubar          ###   ########.fr        #
+#    Created: 2021/03/16 17:14:34 by aldubar           #+#    #+#              #
+#    Updated: 2021/03/16 17:40:16 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-	global		ft_strdup
+	global		ft_write
 
-	extern		ft_strlen
-	extern		ft_strcpy
-	extern		malloc
 	extern		__errno_location
 
 	section		.text
 
-ft_strdup:
-			push	rdi				; save dest
-			call	ft_strlen			; rax = ft_strlen
-			inc	rax				; rax++
-			mov	rdi, rax			; rdi = rax
-			call	malloc wrt ..plt		; rax = malloc(rdi)
-			cmp	rax, 0				; malloc failed ?
-			je	return
-			mov	rdi, rax			; dest = rax
-			pop	rsi				; retrieve dest into src
-			call	ft_strcpy			; rax = dest	
+ft_write:
+			mov	rax, 1				; write function in rax
+			syscall					; call write
+			cmp	rax, 0				; error ?
+			jl	error
 			ret
 
-	return:
+	error:
+			neg	rax				; absolute value of rax
+			mov	rdi, rax
 			call	__errno_location wrt ..plt
-			mov	QWORD [rax], 12			; errno value of 'out of memory'
-			pop	rax
+			mov	[rax], rdi			; rax = fd
+			mov	rax, -1
 			ret

@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/16 10:52:33 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/16 17:24:39 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,7 @@ int			main(void)
 	check_strcpy();
 	printf("\033[0;35m -------------------\n|     ft_strdup     |\n\n\033[0;m");
 	check_strdup();
+	printf("\033[0;35m -------------------\n|     ft_write      |\n\n\033[0;m");
+	check_write();
 	return (0);
 }
