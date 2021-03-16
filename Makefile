@@ -6,7 +6,7 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 10:12:59 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/15 22:16:48 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/16 10:53:22 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,11 @@ TEST		=	libasm
 
 SRCS		=	strlen.s \
 			strcmp.s \
-			strcpy.s
+			strcpy.s \
+			strdup.s
 
-SRCS_TEST	=	main.c
+SRCS_TEST	=	main.c \
+			check_strdup.c
 
 OK		=	[ \033[0;32mok\033[0m ]
 

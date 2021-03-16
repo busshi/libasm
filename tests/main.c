@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/16 10:01:50 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/16 10:52:33 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	check_strcpy(void)
 {
 	int		i;
-	char	dest[50];;
+	char	dest[50];
 	char	*s[10];
 
 	s[0] = "test";
@@ -101,11 +101,13 @@ int			main(void)
 	printf("\033[0;33m ------------------------\n");
 	printf("|      LIBASM TESTS      |\n");
 	printf(" ------------------------\n\n\033[0;m");
-	printf("\033[0;35m --------------------\n|      ft_strlen     |\n\n\033[0;m");
+	printf("\033[0;35m -------------------\n|     ft_strlen     |\n\n\033[0;m");
 	check_strlen();
-	printf("\033[0;35m --------------------\n|      ft_strcmp     |\n\n\033[0;m");
+	printf("\033[0;35m -------------------\n|     ft_strcmp     |\n\n\033[0;m");
 	check_strcmp();
-	printf("\033[0;35m --------------------\n|      ft_strcpy     |\n\n\033[0;m");
+	printf("\033[0;35m -------------------\n|     ft_strcpy     |\n\n\033[0;m");
 	check_strcpy();
+	printf("\033[0;35m -------------------\n|     ft_strdup     |\n\n\033[0;m");
+	check_strdup();
 	return (0);
 }
