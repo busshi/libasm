@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 17:24:50 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/16 18:07:36 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/16 23:44:48 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static void	check_null_string(void)
 
 void		check_write(void)
 {
-	int		mine;
-	int		real;
+	ssize_t	mine;
+	ssize_t	real;
 	int		i;
 	char	*s[8];
 
@@ -82,7 +82,7 @@ void		check_write(void)
 	{
 		mine = ft_write(1, s[i], strlen(s[i]));
 		real = write(1, s[i], strlen(s[i]));
-		printf("ft_write [%d]\tvs\t[%d] write\t\t", mine, real);
+		printf("ft_write [%zd]\tvs\t[%zd] write\t\t", mine, real);
 		if (mine == real)
 			printf("[\033[0;32m ok \033[0m]\n\n");
 		else
