@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/16 23:41:52 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 00:41:54 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ int			main(void)
 	check_write();
 	printf("\033[0;35m -------------------\n|      ft_read      |\n\n\033[0;m");
 	check_read();
+        printf("\033[0;33m[ MANDATORY PART FINISHED ]\n\n");
+	printf("Run make bonus to compile bonus...\n\033[0;m");
 	return (0);
 }

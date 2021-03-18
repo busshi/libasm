@@ -6,7 +6,7 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/16 10:19:55 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/16 16:13:09 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/17 17:03:53 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,4 +36,5 @@ ft_strdup:
 			call	__errno_location wrt ..plt
 			mov	QWORD [rax], 12			; errno value of 'out of memory'
 			pop	rax
+			xor	rax, rax
 			ret

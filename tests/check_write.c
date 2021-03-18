@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 17:24:50 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/16 23:44:48 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/17 17:26:24 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,18 @@ static void	check_neg_size(void)
 {
 	ssize_t	mine;
 	ssize_t	real;
+	int		error1;
+	int		error2;
 
 	real = write(1, "error", -5);
+	perror("mine");
+	error1 = errno;
 	mine = ft_write(1, "error", -5);
+	perror("real");
+	error2 = errno;
+	printf("errno:\t\t\t\t[%d]\tvs\t[%d]\n", error1, error2);
 	printf("ft_write(1, \"error\", -5)\t[%zd]\tvs\t[%zd]\twrite\t\t",
 			mine, real);
-	perror("");
 	if (mine == real)
 		printf("[\033[0;32m ok \033[0m]\n\n");
 	else
@@ -32,12 +38,18 @@ static void	check_neg_fd(void)
 {
 	ssize_t	mine;
 	ssize_t	real;
+	int		error1;
+	int		error2;
 
 	real = write(-1, "error", 5);
+	perror("mine");
+	error1 = errno;
 	mine = ft_write(-1, "error", 5);
+	perror("real");
+	error2 = errno;
+	printf("errno:\t\t\t\t[%d]\tvs\t[%d]\n", error1, error2);
 	printf("ft_write(-1, \"error\", 5)\t[%zd]\tvs\t[%zd]\twrite\t\t",
 			mine, real);
-	perror("");
 	if (mine == real)
 		printf("[\033[0;32m ok \033[0m]\n\n");
 	else
@@ -49,12 +61,18 @@ static void	check_null_string(void)
 {
 	ssize_t	mine;
 	ssize_t	real;
+	int		error1;
+	int		error2;
 
 	printf("\033[0;35m -------------------\n|    write_error    |\n\n\033[0;m");
 	real = write(1, NULL, 3);
+	error1 = errno;
+	perror("mine");
 	mine = ft_write(1, NULL, 3);
+	perror("real");
+	error2 = errno;
+	printf("errno:\t\t\t\t[%d]\tvs\t[%d]\n", error1, error2);
 	printf("ft_write(1, NULL, 3)\t\t[%zd]\tvs\t[%zd]\twrite\t\t", mine, real);
-	perror("");
 	if (mine == real)
 		printf("[\033[0;32m ok \033[0m]\n\n");
 	else

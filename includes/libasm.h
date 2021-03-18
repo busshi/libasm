@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:20:01 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/16 17:32:32 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 00:35:51 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <errno.h>
 
 size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -28,5 +29,6 @@ ssize_t	ft_write(int fd, const void *buff, size_t count);
 void	check_write(void);
 ssize_t	ft_read(int fd, void *buff, size_t count);
 void	check_read(void);
+void	read_error();
 
 #endif
