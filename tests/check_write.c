@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 17:24:50 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/17 17:26:24 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:09:25 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ static void	check_neg_size(void)
 	printf("errno:\t\t\t\t[%d]\tvs\t[%d]\n", error1, error2);
 	printf("ft_write(1, \"error\", -5)\t[%zd]\tvs\t[%zd]\twrite\t\t",
 			mine, real);
-	if (mine == real)
-		printf("[\033[0;32m ok \033[0m]\n\n");
-	else
-		printf("[\033[0;31m ko \033[0m]\n\n");
+	ok_or_ko(mine, real);
 }
 
 static void	check_neg_fd(void)
@@ -50,10 +47,7 @@ static void	check_neg_fd(void)
 	printf("errno:\t\t\t\t[%d]\tvs\t[%d]\n", error1, error2);
 	printf("ft_write(-1, \"error\", 5)\t[%zd]\tvs\t[%zd]\twrite\t\t",
 			mine, real);
-	if (mine == real)
-		printf("[\033[0;32m ok \033[0m]\n\n");
-	else
-		printf("[\033[0;31m ko \033[0m]\n\n");
+	ok_or_ko(mine, real);
 	check_neg_size();
 }
 
@@ -73,10 +67,7 @@ static void	check_null_string(void)
 	error2 = errno;
 	printf("errno:\t\t\t\t[%d]\tvs\t[%d]\n", error1, error2);
 	printf("ft_write(1, NULL, 3)\t\t[%zd]\tvs\t[%zd]\twrite\t\t", mine, real);
-	if (mine == real)
-		printf("[\033[0;32m ok \033[0m]\n\n");
-	else
-		printf("[\033[0;31m ko \033[0m]\n\n");
+	ok_or_ko(mine, real);
 	check_neg_fd();
 }
 
@@ -101,10 +92,7 @@ void		check_write(void)
 		mine = ft_write(1, s[i], strlen(s[i]));
 		real = write(1, s[i], strlen(s[i]));
 		printf("ft_write [%zd]\tvs\t[%zd] write\t\t", mine, real);
-		if (mine == real)
-			printf("[\033[0;32m ok \033[0m]\n\n");
-		else
-			printf("[\033[0;31m ko \033[0m]\n\n");
+		ok_or_ko(mine, real);
 	}
 	check_null_string();
 }

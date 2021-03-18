@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 17:24:50 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/18 00:40:40 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:08:04 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ static void	loop_read(char *s, size_t size)
 	free(buf);
 	close(fd);
 	printf("\nft_read\t\t[%zd]\tvs\t[%zd]\tread\t\t", mine, real);
-	if (mine == real)
-		printf("[\033[0;32m ok \033[0m]\n\n");
-	else
-		printf("[\033[0;31m ko \033[0m]\n\n");
+	ok_or_ko(mine, real);
 }
 
 void		check_read(void)

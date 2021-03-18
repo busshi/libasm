@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/18 00:41:54 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:12:25 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,7 @@ static void	check_strlen(void)
 	{
 		printf("%s\n\033[20Gft_strlen [%zu]\tvs\t[%zu] strlen\t\t",
 				s[i], ft_strlen(s[i]), strlen(s[i]));
-		if (ft_strlen(s[i]) == strlen(s[i]))
-			printf("[\033[0;32m ok \033[0m]\n\n");
-		else
-			printf("[\033[0;31m ko \033[0m]\n\n");
+		ok_or_ko((ssize_t)ft_strlen(s[i]), (ssize_t)strlen(s[i]));
 	}
 }
 
@@ -113,7 +110,7 @@ int			main(void)
 	check_write();
 	printf("\033[0;35m -------------------\n|      ft_read      |\n\n\033[0;m");
 	check_read();
-        printf("\033[0;33m[ MANDATORY PART FINISHED ]\n\n");
+	printf("\033[0;33m[ MANDATORY PART FINISHED ]\n\n");
 	printf("Run make bonus to compile bonus...\n\033[0;m");
 	return (0);
 }

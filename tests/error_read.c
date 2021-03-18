@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 00:33:33 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/18 00:34:26 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:16:50 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ static void	read_nul_buf(char *file, int size)
 	printf("ft_read_nul_buf(%d, %s, %d)\t[%zd]\tvs\t[%zd]\tread\t\t",
 			fd, file, size, mine, real);
 	close(fd);
-	if (mine == real && error1 == error2)
-		printf("[\033[0;32m ok \033[0m]\n\n");
-	else
-		printf("[\033[0;31m ko \033[0m]\n\n");
+	ok_or_ko_double(error1, error2, mine, real);
 }
 
 static void	loop_error(char *file, int size)
@@ -65,10 +62,7 @@ static void	loop_error(char *file, int size)
 			fd, file, size, mine, real);
 	free(buf);
 	close(fd);
-	if (mine == real && error1 == error2)
-		printf("[\033[0;32m ok \033[0m]\n\n");
-	else
-		printf("[\033[0;31m ko \033[0m]\n\n");
+	ok_or_ko_double(error1, error2, mine, real);
 }
 
 void		read_error(void)

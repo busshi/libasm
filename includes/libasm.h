@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:20:01 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/18 00:35:51 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:11:34 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	check_write(void);
 ssize_t	ft_read(int fd, void *buff, size_t count);
 void	check_read(void);
 void	read_error();
+void	ok_or_ko(ssize_t mine, ssize_t real);
+void	ok_or_ko_double(int error1, int error2, ssize_t mine, ssize_t real);
 
 #endif
