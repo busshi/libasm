@@ -6,7 +6,7 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 10:12:59 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/18 21:05:21 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/19 15:06:17 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,17 @@ SRCS		=	strlen.s \
 			write.s \
 			read.s
 
+SRCS_BONUS	=	list_size_bonus.s \
+			list_push_front_bonus.s
+
 SRCS_TEST	=	main.c \
 			check_strdup.c \
 			check_write.c \
 			check_read.c \
 			error_read.c \
 			utils.c
+
+SRCS_TEST_BONUS	=	main_bonus.c
 
 OK		=	[ \033[0;32mok\033[0m ]
 
@@ -42,13 +47,17 @@ RM		=	@rm -f
 
 OBJS		=	$(addprefix srcs/ft_, $(SRCS:.s=.o))
 
+OBJS_BONUS	=	$(addprefix srcs/ft_, $(SRCS_BONUS:.s=.o))
+
 OBJS_TEST	=	$(addprefix tests/, $(SRCS_TEST:.c=.o))
+
+OBJS_TEST_BONUS	=	$(addprefix tests/, $(SRCS_TEST_BONUS:.c=.o))
 
 .s.o:
 		$(ASM) $(AFLAGS) $<
 
 .c.o:
-		$(CC) $(CFLAGS) -I includes -c $< -o $(<:.c=.o)
+		$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS) $(OBJS_TEST)
 		@echo "Compiling libasm..."
@@ -60,9 +69,16 @@ $(NAME):	$(OBJS) $(OBJS_TEST)
 
 all:		$(NAME)
 
+bonus:		$(OBJS) $(OBJS_BONUS) $(OBJS_TEST_BONUS)
+		@echo "Compiling libasm..."
+		@ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+		@echo "$(OK) libasm with bonus build !"
+		@echo "Compiling bonus tests..."
+		$(CC) $(CFLAGS) $(OBJS_TEST_BONUS) -L. -lasm -o $(TEST)
+		@echo "$(OK) Bonus tests build ! ==> Run ./$(TEST)"
 clean:
 		@echo "Cleaning..."
-		$(RM) $(OBJS) $(OBJS_TEST) $(TEST)
+		$(RM) $(OBJS) $(OBJS_BONUS) $(OBJS_TEST) $(OBJS_TEST_BONUS) $(TEST)
 		@echo "$(OK) Cleaned !"
 
 fclean:		clean
