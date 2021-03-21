@@ -6,7 +6,7 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 10:12:59 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/19 15:06:17 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/21 18:04:17 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,12 @@ SRCS_TEST	=	main.c \
 			error_read.c \
 			utils.c
 
-SRCS_TEST_BONUS	=	main_bonus.c
+SRCS_TEST_BONUS	=	main_bonus.c \
+			check_strdup.c \
+			check_write.c \
+			check_read.c \
+			error_read.c \
+			utils_bonus.c
 
 OK		=	[ \033[0;32mok\033[0m ]
 

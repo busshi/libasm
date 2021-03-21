@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 00:33:33 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/18 21:16:50 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/21 17:55:14 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,13 @@ static void	read_nul_buf(char *file, int size)
 	ok_or_ko_double(error1, error2, mine, real);
 }
 
-static void	loop_error(char *file, int size)
+static void	compare(char *file, int size, int error1, ssize_t mine)
 {
-	int		error1;
 	int		error2;
 	char	*buf;
 	int		fd;
-	ssize_t	mine;
 	ssize_t	real;
 
-	buf = (char *)malloc(sizeof(char) * (size + 1));
-	fd = open(file, O_RDONLY);
-	mine = ft_read(fd, buf, size);
-	perror("mine");
-	error1 = errno;
-	free(buf);
-	close(fd);
 	buf = (char *)malloc(sizeof(char) * (size + 1));
 	fd = open(file, O_RDONLY);
 	real = read(fd, buf, size);
@@ -63,6 +54,23 @@ static void	loop_error(char *file, int size)
 	free(buf);
 	close(fd);
 	ok_or_ko_double(error1, error2, mine, real);
+}
+
+static void	loop_error(char *file, int size)
+{
+	int		error1;
+	char	*buf;
+	int		fd;
+	ssize_t	mine;
+
+	buf = (char *)malloc(sizeof(char) * (size + 1));
+	fd = open(file, O_RDONLY);
+	mine = ft_read(fd, buf, size);
+	perror("mine");
+	error1 = errno;
+	free(buf);
+	close(fd);
+	compare(file, size, error1, mine);
 }
 
 void		read_error(void)

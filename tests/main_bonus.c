@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/19 15:05:57 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/21 18:04:41 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,29 @@ static void	check_list(int max)
 		printf("[\033[0;31m ko \033[0m]\n\n");
 }
 
+static void	mandatory(void)
+{
+	printf("\033[0;33m ------------------------\n");
+	printf("|      LIBASM TESTS      |\n");
+	printf(" ------------------------\n\n\033[0;m");
+	printf("\033[0;35m -------------------\n|     ft_strlen     |\n\n\033[0;m");
+	check_strlen();
+	printf("\033[0;35m -------------------\n|     ft_strcmp     |\n\n\033[0;m");
+	check_strcmp();
+	printf("\033[0;35m -------------------\n|     ft_strcpy     |\n\n\033[0;m");
+	check_strcpy();
+	printf("\033[0;35m -------------------\n|     ft_strdup     |\n\n\033[0;m");
+	check_strdup();
+	printf("\033[0;35m -------------------\n|     ft_write      |\n\n\033[0;m");
+	check_write();
+	printf("\033[0;35m -------------------\n|      ft_read      |\n\n\033[0;m");
+	check_read();
+	printf("\033[0;33m[ MANDATORY PART FINISHED ]\n\n");
+}
+
 int			main(void)
 {
+	mandatory();
 	printf("\033[0;33m ------------------------\n");
 	printf("|   LIBASM_BONUS TESTS   |\n");
 	printf(" ------------------------\n\n\033[0;m");
