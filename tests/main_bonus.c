@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 14:16:48 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/21 18:04:41 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/22 16:27:37 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ static void	print_list(t_list *lst)
 	printf("(null)\n");
 }
 
+static void	free_list(t_list *lst)
+{
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		free(&lst->data);
+		lst = lst->next;
+	}
+}
+
 static void	check_list(int max)
 {
 	int		size;
@@ -33,17 +44,14 @@ static void	check_list(int max)
 
 	lst = NULL;
 	size = 0;
-	i = 0;
+	i = -1;
 	s[0] = "1st push";
 	s[1] = "2nd push";
 	s[2] = "3rd push";
 	s[3] = "4th push";
 	s[4] = "5th push";
-	while (i < max)
-	{
+	while (++i < max)
 		ft_list_push_front(&lst, s[i]);
-		i++;
-	}
 	print_list(lst);
 	size = ft_list_size(lst);
 	printf("List size: [%d]\t\t\t\t\t\t", size);
@@ -51,6 +59,7 @@ static void	check_list(int max)
 		printf("[\033[0;32m ok \033[0m]\n\n");
 	else
 		printf("[\033[0;31m ko \033[0m]\n\n");
+	free_list(lst);
 }
 
 static void	mandatory(void)
@@ -80,7 +89,8 @@ int			main(void)
 	printf("|   LIBASM_BONUS TESTS   |\n");
 	printf(" ------------------------\n\n\033[0;m");
 	printf("\033[0;35m ------------------------\n");
-	printf("|   ft_list_push_front   |\n\n\033[0;m");
+	printf("|   ft_list_push_front   |\n");
+	printf("|      ft_list_size      |\n\n\033[0;m");
 	check_list(1);
 	check_list(3);
 	check_list(5);

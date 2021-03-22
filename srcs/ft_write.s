@@ -6,9 +6,12 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/16 17:14:34 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/16 23:39:04 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 11:59:07 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; ssize_t	ft_write(int rdi, void *rsi, size_t rdx)
+
 
 	global		ft_write
 

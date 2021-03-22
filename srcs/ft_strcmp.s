@@ -6,9 +6,12 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 14:47:41 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/15 22:29:19 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 11:55:02 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; int	ft_strcmp(const char *rdi, const char *rsi)
+
 
 		global		ft_strcmp
 

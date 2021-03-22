@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 17:24:50 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/18 21:08:04 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/22 12:20:36 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ static void	read_stdin(void)
 {
 	int		fd;
 	char	*buf;
-	ssize_t	mine;
+	ssize_t	size;
 
-	buf = (char *)malloc(sizeof(char) * 201);
+	buf = (char *)malloc(sizeof(char) * 2001);
 	fd = STDIN_FILENO;
-	mine = ft_read(fd, buf, 200);
-	printf("%s\n", buf);
+	size = ft_read(fd, buf, 2000);
+	printf("%s\nsize\t[%zd]\n\n", buf, size);
 	free(buf);
 	close(fd);
-	buf = (char *)malloc(sizeof(char) * 200);
 }
 
 static void	loop_read(char *s, size_t size)

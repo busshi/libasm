@@ -6,7 +6,7 @@
 /*   By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:01:30 by aldubar           #+#    #+#             */
-/*   Updated: 2021/03/21 18:06:19 by aldubar          ###   ########.fr       */
+/*   Updated: 2021/03/22 11:49:12 by aldubar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	check_strcpy(void)
 	s[3] = "test\t\t\v\rtabulations\n";
 	s[4] = "nul byte\0";
 	s[5] = "nul\0byte";
-	s[6] = "caractères spéciaux 👉 &é'(§è!çà)-ù^¨$`*=+:/;.,?";
-	s[7] = "caractères spéciaux 👉 &-)àçç!éè'§&";
+	s[6] = "caractères spéciaux : &é#'(-è_ç^à)$ù%!:/;.,?";
+	s[7] = "caractères spéciaux 👉 \xFF \xAE&-)àçç!éè'§&";
 	s[8] = "";
 	s[9] = "\0";
 	i = -1;

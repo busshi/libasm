@@ -6,9 +6,12 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/16 23:30:16 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/16 23:38:19 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 11:58:56 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; ssize_t	ft_read(int rdi, char *rsi, size_t rdx)
+
 
 	global		ft_read
 

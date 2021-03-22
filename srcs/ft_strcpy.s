@@ -6,9 +6,12 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/15 22:16:57 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/16 10:16:06 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 11:53:23 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; char	*ft_strcpy(char *rdi, const char *rsi)
+
 
 		global		ft_strcpy
 

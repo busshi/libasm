@@ -6,9 +6,12 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/19 14:16:18 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/19 14:50:03 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 12:01:41 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; void	ft_list_push_front(t_list **rdi, void *rsi)
+
 
 	global 		ft_list_push_front
 

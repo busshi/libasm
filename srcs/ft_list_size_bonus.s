@@ -6,9 +6,11 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/19 10:37:31 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/19 14:23:08 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 12:00:24 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; int	ft_list_size(t_list *rdi)
 
 
 		global		ft_list_size

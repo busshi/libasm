@@ -6,9 +6,12 @@
 #    By: aldubar <aldubar@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/16 10:19:55 by aldubar           #+#    #+#              #
-#    Updated: 2021/03/17 17:03:53 by aldubar          ###   ########.fr        #
+#    Updated: 2021/03/22 11:56:02 by aldubar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+; char *ft_strdup(const char *rdi)
+
 
 	global		ft_strdup
 
